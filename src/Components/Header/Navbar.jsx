@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import logo from '../../assets/logo.png'
 import { AuthContext } from '../../Provider/Authprovider';
 
@@ -18,6 +18,7 @@ const Navbar = () => {
         <>
             <li><NavLink to="/" className="link-font">Home</NavLink></li>
             <li><NavLink to="/explore" className="link-font">Explore Gardeners</NavLink></li>
+            <li><NavLink to="/browsetips" className="link-font">Browse Tips</NavLink></li>
             <li><NavLink to="/sharetip" className="link-font">Share Tip</NavLink></li>
             <li><NavLink to="/mytips" className="link-font">My Tips</NavLink></li>
             {
@@ -28,7 +29,7 @@ const Navbar = () => {
                     </>
                     :
                     <>
-                        <li onClick={handlelogout}><NavLink  className="link-font">Logout</NavLink></li>
+                        <li onClick={handlelogout}><Link  className="link-font">Logout</Link></li>
                     </>
             }
         </>
@@ -76,12 +77,10 @@ const Navbar = () => {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         <li>
-                            <a className="justify-between">
+                            <a>
                                 Profile
-                                <span className="badge">New</span>
                             </a>
                         </li>
-                        <li><a>Settings</a></li>
                         <li><a>Logout</a></li>
                     </ul>
                 </div>

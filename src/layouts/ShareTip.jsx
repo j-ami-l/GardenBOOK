@@ -65,6 +65,7 @@ const ShareTip = () => {
                         <input type="text" name="topic" placeholder="Topic" className="input input-bordered w-full" required />
                         <input type="text" name="category" placeholder="Category" className="input input-bordered w-full" />
                         <input type="email" name="email" readOnly value={user.email} placeholder="" className="input input-bordered w-full" />
+                        <input className='hidden' name='userImage' type="text" value={user.photoURL}/>
                         <input type="text" name="image" placeholder="Image URL" className="input input-bordered w-full" />
                         <div className='flex gap-1 w-full'>
                             <select name="difficulty" defaultValue={""} className="select select-bordered" required>

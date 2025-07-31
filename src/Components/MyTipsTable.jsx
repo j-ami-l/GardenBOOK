@@ -39,7 +39,7 @@ const MyTipsTable = ({ tip }) => {
                 </span>
             </Td>
             <Td className="p-3 text-gray-500"><div className="space-x-2 flex items-center">
-                <div onClick={() => document.getElementById(`${tip._id}modal`).showModal()} className=" border-green-200 border-2  p-2 rounded-[50%]"><FaPencil
+                <div onClick={() => document.getElementById(`${tip._id}modal`).showModal()} className=" border-green-200 cursor-pointer border-2  p-2 rounded-[50%]"><FaPencil
                     size={18}
                     color='green'></FaPencil></div>
                 <div className=" border-green-200 border-2  p-2 rounded-[50%]"><MdDelete
