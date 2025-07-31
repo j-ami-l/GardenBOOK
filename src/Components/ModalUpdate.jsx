@@ -3,7 +3,7 @@ import React, { use } from 'react';
 import Modal from 'react-modal';
 import { AuthContext } from '../Provider/Authprovider';
 
-const ModalUpdate = ({ tip }) => {
+const ModalUpdate = ({ tip , handeUpdates }) => {
 
     const {user} = use(AuthContext)
 
@@ -24,7 +24,7 @@ const ModalUpdate = ({ tip }) => {
             .then(res => res.json())
             .then(result => {
                 console.log(result);
-
+                handeUpdates(UpdatePost)
             })
     }
     return (

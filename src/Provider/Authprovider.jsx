@@ -9,51 +9,71 @@ export const AuthContext = createContext()
 import { GoogleAuthProvider } from "firebase/auth";
 
 
-const AuthProvider = ({children}) => {
-    
+const AuthProvider = ({ children }) => {
+
     const provider = new GoogleAuthProvider();
-    const [user , setUser] = useState(null)
-    const [loading , setLoading] = useState(true)
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [userOtherInfo , setUserOtherInfo] = useState({})
 
 
-    const register = (email , password) => {
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/user`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({ email: user?.email })
+        })
+        .then(res=>res.json())
+        .then(result=>{
+            
+            setUserOtherInfo(result)
+            console.log(userOtherInfo);
+            
+        })
+    }, [user])
+
+
+    const register = (email, password) => {
         setLoading(true)
-        return createUserWithEmailAndPassword(auth , email , password)
+        return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const login = (email , password) =>{
+    const login = (email, password) => {
         setLoading(true)
-        return signInWithEmailAndPassword(auth , email , password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const updateuser = (updates) =>{
+    const updateuser = (updates) => {
         setLoading(true)
-        return updateProfile(auth.currentUser , updates)
+        return updateProfile(auth.currentUser, updates)
     }
 
-    const logout = () =>{
+    const logout = () => {
         setLoading(true)
         return signOut(auth)
     }
 
-    const googleRegister = () =>{
+    const googleRegister = () => {
         setLoading(true)
-        return signInWithPopup(auth , provider)
+        return signInWithPopup(auth, provider)
     }
 
-    useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth , (currentUser)=>{
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
             setLoading(false)
         })
-        return ()=>{
-            
+        return () => {
+
             unSubscribe;
-        } 
+        }
     }, [])
 
 
-    const  userInfo = {
+    const userInfo = {
         updateuser,
         login,
         user,
@@ -61,6 +81,8 @@ const AuthProvider = ({children}) => {
         logout,
         googleRegister,
         loading,
+        userOtherInfo,
+        setUserOtherInfo
     }
 
     return (

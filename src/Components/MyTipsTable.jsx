@@ -4,48 +4,18 @@ import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { MdDelete } from "react-icons/md";
 import { FaPencil } from "react-icons/fa6";
 import ModalUpdate from './ModalUpdate';
-import Swal from 'sweetalert2';
+import { useState } from 'react';
 
 
-const MyTipsTable = ({ tip }) => {
 
+const MyTipsTable = ({ SingleTip , handleDelete }) => {
+    
+    const [tip , setTips] = useState(SingleTip)
 
-    const handleDelete = (id) => {
-        console.log(id);
-
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            color: "white",
-            background: "#1A4D2E",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-
-                fetch('http://localhost:3000/delete', {
-                    method: "DELETE",
-                    headers: {
-                        "content-type": "application/json"
-                    },
-                    body: JSON.stringify({ id })
-                })
-                    .then(res => res.json())
-                    .then(result => {
-                        console.log(result);
-
-                    })
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                });
-            }
-        });
+    const handeUpdates = e =>{
+        setTips(e)
     }
+    
 
     return (
 
@@ -80,7 +50,7 @@ const MyTipsTable = ({ tip }) => {
                 ></MdDelete></div>
             </div></Td>
             <Td>
-                <ModalUpdate tip={tip}></ModalUpdate>
+                <ModalUpdate handeUpdates={handeUpdates} tip={tip}></ModalUpdate>
             </Td>
         </Tr >
 

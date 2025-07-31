@@ -20,12 +20,26 @@ const SignUp = () => {
             return;
         }
 
+
         register(email, password)
             .then((result) => {
                 console.log(result);
                 setError(null);
                 updateuser({ displayName: name, photoURL: photo })
-                    .then()
+                    .then(() => {
+                        fetch("http://localhost:3000/gardenbook/users", {
+                            method: "POST",
+                            headers: {
+                                "content-type": "application/json"
+                            },
+                            body: JSON.stringify({ displayName: name, email: email, photoURL: photo , likedPost: [1,2,3]})
+                        })
+                            .then(res => res.json())
+                            .then(result => {
+                                console.log(result);
+
+                            })
+                    })
                     .catch((err) => {
                         setError(err.message);
                     });
@@ -40,6 +54,22 @@ const SignUp = () => {
         googleRegister()
             .then((result) => {
                 console.log(result);
+                fetch("http://localhost:3000/gardenbook/users", {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify({ displayName: result.user?.displayName,
+                         email: result.user?.email, 
+                         photoURL: result.user?.photoURL,
+                        likedPost: [1,2,3]
+                        })
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        console.log(result);
+
+                    })
                 setError(null);
             })
             .catch((err) => {

@@ -73,7 +73,7 @@ const Login = () => {
             <a className="link link-hover text-[#1A4D2E] className='text-[11px] md:text-[15px]'">Forgot password?</a>
             <span className='text-[11px] md:text-[15px]'>
               Don’t have an account?{' '}
-              <Link to="/auth/register" className="text-[#1A4D2E] font-medium underline">
+              <Link to="/signup" className="text-[#1A4D2E] font-medium underline">
                 Register
               </Link>
             </span>
