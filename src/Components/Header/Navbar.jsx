@@ -5,7 +5,14 @@ import { AuthContext } from '../../Provider/Authprovider';
 
 const Navbar = () => {
 
-    const { user } = use(AuthContext)
+    const { user , logout } = use(AuthContext)
+
+    const handlelogout = () =>{
+        logout()
+        .then()
+        .catch()
+
+    }
 
     const link = <>
         <>
@@ -21,7 +28,7 @@ const Navbar = () => {
                     </>
                     :
                     <>
-                        <li><NavLink  className="link-font">Logout</NavLink></li>
+                        <li onClick={handlelogout}><NavLink  className="link-font">Logout</NavLink></li>
                     </>
             }
         </>
@@ -61,7 +68,7 @@ const Navbar = () => {
                         <div className="w-10 rounded-full">
                             <img
                                 alt="Tailwind CSS Navbar component"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                src={user ? user.photoURL : "https://img.icons8.com/?size=100&id=14736&format=png&color=000000"} />
                         </div>
                     </div>
 
