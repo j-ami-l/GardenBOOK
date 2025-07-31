@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { AuthContext } from '../Provider/AuthProvider';
+import { AuthContext } from '../Provider/Authprovider';
 
 const ShareTip = () => {
 
@@ -34,8 +34,7 @@ const ShareTip = () => {
         <div className="max-w-2xl mx-5 md:mx-auto my-30">
             <div className="card bg-base-100 shadow-md p-6">
                 <form onSubmit={handleSubmit}>
-                    {/* User avatar and name input */}
-                    <div className="flex items-center mb-4">
+                    <div className="flex gap-2 items-center mb-4">
                         <div className="avatar">
                             <div className="w-10 rounded-full">
                                 <img src={user.photoURL} alt="User" />
@@ -64,8 +63,8 @@ const ShareTip = () => {
                         <input type="text" name="title" placeholder="Title" className="input input-bordered w-full" required />
                         <input type="text" name="topic" placeholder="Topic" className="input input-bordered w-full" required />
                         <input type="text" name="category" placeholder="Category" className="input input-bordered w-full" />
-                        <input type="email" name="email" readOnly value={user.email} placeholder="" className="input input-bordered w-full" />
-                        <input className='hidden' name='userImage' type="text" value={user.photoURL}/>
+                        <input type="email" readOnly name="email"  value={user.email} placeholder="" className="input input-bordered w-full" />
+                        <input className='hidden' readOnly name='userImage' type="text" value={user.photoURL}/>
                         <input type="text" name="image" placeholder="Image URL" className="input input-bordered w-full" />
                         <div className='flex gap-1 w-full'>
                             <select name="difficulty" defaultValue={""} className="select select-bordered" required>

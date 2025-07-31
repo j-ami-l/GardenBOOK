@@ -26,18 +26,11 @@ const ModalUpdate = ({ tip }) => {
                 console.log(result);
 
             })
-
-
-
     }
-
-
-
-    console.log(tip.title)
     return (
         <div className=''>
             <dialog id={`${tip._id}modal`} className="modal">
-                <div className="bg-white p-10 rounded-2xl">
+                <div className="bg-white p-5 rounded-2xl">
                     <form method="dialog">
                         <div className='flex justify-end'><button className="btn">Close</button></div>
                     </form>
@@ -63,13 +56,13 @@ const ModalUpdate = ({ tip }) => {
                             <textarea
                                 defaultValue={tip.description}
                                 name="description"
-                                className="textarea resize-none text-lg border-0 focus:outline-0 w-full mb-4"
+                                className="textarea resize-none text-md md:text-lg border-0 focus:outline-0 w-full mb-4"
                                 placeholder="Share your gardening tip..."
                                 rows={4}
                                 required
                             ></textarea>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div className="grid  grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                 <input type="text" name="title" placeholder="Title" defaultValue={tip.title} className="input input-bordered w-full" required />
                                 <input type="text" name="topic" placeholder="Topic" defaultValue={tip.topic} className="input input-bordered w-full" required />
                                 <input type="text" name="category" placeholder="Category" defaultValue={tip.category} className="input input-bordered w-full" />

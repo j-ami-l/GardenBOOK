@@ -13,19 +13,17 @@ const BrowseTips = () => {
                 <Table className="w-full border-collapse text-left">
                     <Thead className="bg-gray-100">
                         <Tr className="text-gray-700 text-sm uppercase tracking-wide">
-                            <Th className="p-3">Image</Th>
+                            <Th className="p-3">Author</Th>
                             <Th className="p-3">Title</Th>
                             <Th className="p-3">Topic</Th>
+                            <Th className="p-3">Image</Th>
                             <Th className="p-3">Difficulty</Th>
-                            <Th className="p-3">Author</Th>
                             <Th className="p-3 text-center">Action</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
                         {allTips.map((tip) => (
-                            <>
                                 <BrowseTipsTable key={tip._id} tip={tip}></BrowseTipsTable>
-                            </>
                         ))}
                     </Tbody>
                 </Table>

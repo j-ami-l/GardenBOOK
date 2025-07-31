@@ -41,9 +41,7 @@ const MyTips = () => {
                     </Thead>
                     <Tbody>
                         {mytips.map((tip) => (
-                            <>
                                 <MyTipsTable key={tip._id} tip={tip}></MyTipsTable>
-                            </>
                         ))}
                     </Tbody>
                 </Table>

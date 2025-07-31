@@ -52,7 +52,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="mx-auto  md:mx-0 md:flex-1">
-                <a className="btn btn-ghost text-xl"><img className='w-50' src={logo} alt="" /></a>
+                <Link to={'/'}><img className='w-50' src={logo} alt="" /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

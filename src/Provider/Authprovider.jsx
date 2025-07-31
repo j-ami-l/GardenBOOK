@@ -13,32 +13,38 @@ const AuthProvider = ({children}) => {
     
     const provider = new GoogleAuthProvider();
     const [user , setUser] = useState(null)
-
+    const [loading , setLoading] = useState(true)
 
 
     const register = (email , password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth , email , password)
     }
 
     const login = (email , password) =>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth , email , password)
     }
 
     const updateuser = (updates) =>{
+        setLoading(true)
         return updateProfile(auth.currentUser , updates)
     }
 
     const logout = () =>{
+        setLoading(true)
         return signOut(auth)
     }
 
     const googleRegister = () =>{
+        setLoading(true)
         return signInWithPopup(auth , provider)
     }
 
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(auth , (currentUser)=>{
             setUser(currentUser)
+            setLoading(false)
         })
         return ()=>{
             
@@ -53,7 +59,8 @@ const AuthProvider = ({children}) => {
         user,
         register,
         logout,
-        googleRegister
+        googleRegister,
+        loading,
     }
 
     return (

@@ -10,11 +10,7 @@ import ModalUpdate from './ModalUpdate';
 const MyTipsTable = ({ tip }) => {
 
     const { user } = use(AuthContext)
-    const [updateForm , setUpdateForm] = useState(false)
-
     
-
-
     return (
 
         <Tr key={tip._id} className="border-t hover:bg-gray-50 text-sm text-gray-800">
