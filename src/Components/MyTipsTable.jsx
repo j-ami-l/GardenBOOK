@@ -1,16 +1,31 @@
-import React, { use, useState } from 'react';
+
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { MdDelete } from "react-icons/md";
 import { FaPencil } from "react-icons/fa6";
-import { AuthContext } from '../Provider/Authprovider';
 import ModalUpdate from './ModalUpdate';
 
 
 const MyTipsTable = ({ tip }) => {
 
-    const { user } = use(AuthContext)
-    
+
+    const  handleDelete =(id) =>{
+        console.log(id);
+        
+        fetch('http://localhost:3000/delete' , {
+            method: "DELETE",
+            headers: {
+                "content-type" : "application/json"
+            },
+            body: JSON.stringify({id})
+        })
+        .then(res=>res.json())
+        .then(result =>{
+            console.log(result);
+            
+        })
+    }
+
     return (
 
         <Tr key={tip._id} className="border-t hover:bg-gray-50 text-sm text-gray-800">
@@ -38,7 +53,7 @@ const MyTipsTable = ({ tip }) => {
                 <div onClick={() => document.getElementById(`${tip._id}modal`).showModal()} className=" border-green-200 cursor-pointer border-2  p-2 rounded-[50%]"><FaPencil
                     size={18}
                     color='green'></FaPencil></div>
-                <div className=" border-green-200 border-2  p-2 rounded-[50%]"><MdDelete
+                <div onClick={()=>handleDelete(tip._id)} className="cursor-pointer border-green-200 border-2  p-2 rounded-[50%]"><MdDelete
                     size={18}
                     color='green'
                 ></MdDelete></div>

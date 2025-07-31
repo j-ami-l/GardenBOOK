@@ -11,7 +11,6 @@ const MyTipsCard = ({ tip }) => {
         category,
         description,
         name,
-        email,
         image,
         difficulty,
         availability,
