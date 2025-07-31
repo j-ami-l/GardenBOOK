@@ -4,26 +4,47 @@ import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { MdDelete } from "react-icons/md";
 import { FaPencil } from "react-icons/fa6";
 import ModalUpdate from './ModalUpdate';
+import Swal from 'sweetalert2';
 
 
 const MyTipsTable = ({ tip }) => {
 
 
-    const  handleDelete =(id) =>{
+    const handleDelete = (id) => {
         console.log(id);
-        
-        fetch('http://localhost:3000/delete' , {
-            method: "DELETE",
-            headers: {
-                "content-type" : "application/json"
-            },
-            body: JSON.stringify({id})
-        })
-        .then(res=>res.json())
-        .then(result =>{
-            console.log(result);
-            
-        })
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            color: "white",
+            background: "#1A4D2E",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch('http://localhost:3000/delete', {
+                    method: "DELETE",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify({ id })
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        console.log(result);
+
+                    })
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
     }
 
     return (
@@ -53,7 +74,7 @@ const MyTipsTable = ({ tip }) => {
                 <div onClick={() => document.getElementById(`${tip._id}modal`).showModal()} className=" border-green-200 cursor-pointer border-2  p-2 rounded-[50%]"><FaPencil
                     size={18}
                     color='green'></FaPencil></div>
-                <div onClick={()=>handleDelete(tip._id)} className="cursor-pointer border-green-200 border-2  p-2 rounded-[50%]"><MdDelete
+                <div onClick={() => handleDelete(tip._id)} className="cursor-pointer border-green-200 border-2  p-2 rounded-[50%]"><MdDelete
                     size={18}
                     color='green'
                 ></MdDelete></div>

@@ -5,12 +5,12 @@ import { AuthContext } from '../../Provider/Authprovider';
 
 const Navbar = () => {
 
-    const { user , logout } = use(AuthContext)
+    const { user, logout } = use(AuthContext)
 
-    const handlelogout = () =>{
+    const handlelogout = () => {
         logout()
-        .then()
-        .catch()
+            .then()
+            .catch()
 
     }
 
@@ -29,7 +29,7 @@ const Navbar = () => {
                     </>
                     :
                     <>
-                        <li onClick={handlelogout}><Link  className="link-font">Logout</Link></li>
+                        <li onClick={handlelogout}><Link className="link-font">Logout</Link></li>
                     </>
             }
         </>
@@ -62,28 +62,19 @@ const Navbar = () => {
                 </ul>
             </div>
 
-            <div className="flex-none md:mr-5">
-                <div className="dropdown dropdown-end">
-
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+            <div className="flex-none md:mr-5 group relative">
+                    <div role="" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
                             <img
                                 alt="Tailwind CSS Navbar component"
                                 src={user ? user.photoURL : "https://img.icons8.com/?size=100&id=14736&format=png&color=000000"} />
                         </div>
                     </div>
-
-                    <ul
-                        tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        <li>
-                            <a>
-                                Profile
-                            </a>
-                        </li>
-                        <li><a>Logout</a></li>
-                    </ul>
-                </div>
+                    <div className="absolute rounded-2xl -left-10 inset-0 bg-green-800 text-white bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 ">
+                        <p className="text-white text-xs  font-semibold text-center">
+                            {user ? user.displayName : "User"}
+                        </p>
+                    </div>
             </div>
 
         </div>
