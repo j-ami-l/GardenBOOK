@@ -20,15 +20,13 @@ const MyTips = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
                 setMytips(result);
             });
     }, [userMail]);
 
     return (
-        <div className='my-10 mx-auto max-w-screen-xl px-4'>
-            <h2 className="text-2xl font-semibold mb-6">My Tips</h2>
-            <div className="overflow-x-auto border rounded-lg shadow-md">
+        <div className='my-15 mx-auto max-w-screen-xl px-4 '>
+            <div className="overflow-x-auto border rounded-lg shadow-xl">
                 <Table className="w-full border-collapse text-left">
                     <Thead className="bg-gray-100">
                         <Tr className="text-gray-700 text-sm uppercase tracking-wide">
@@ -43,12 +41,14 @@ const MyTips = () => {
                     </Thead>
                     <Tbody>
                         {mytips.map((tip) => (
-                            <MyTipsTable tip={tip}></MyTipsTable>
+                            <>
+                                <MyTipsTable key={tip._id} tip={tip}></MyTipsTable>
+                            </>
                         ))}
                     </Tbody>
                 </Table>
             </div>
-           
+
         </div>
     );
 };
