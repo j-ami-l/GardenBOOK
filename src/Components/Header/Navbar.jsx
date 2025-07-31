@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { use } from 'react';
 import { NavLink } from 'react-router';
 import logo from '../../assets/logo.png'
+import { AuthContext } from '../../Provider/Authprovider';
 
 const Navbar = () => {
+
+    const { user } = use(AuthContext)
 
     const link = <>
         <>
@@ -10,8 +13,17 @@ const Navbar = () => {
             <li><NavLink to="/explore" className="link-font">Explore Gardeners</NavLink></li>
             <li><NavLink to="/sharetip" className="link-font">Share Tip</NavLink></li>
             <li><NavLink to="/mytips" className="link-font">My Tips</NavLink></li>
-            <li><NavLink to="/login" className="link-font">Login</NavLink></li>
-            <li><NavLink to="/signup" className="link-font">Signup</NavLink></li>
+            {
+                !user ?
+                    <>
+                        <li><NavLink to="/login" className="link-font">Login</NavLink></li>
+                        <li><NavLink to="/signup" className="link-font">Signup</NavLink></li>
+                    </>
+                    :
+                    <>
+                        <li><NavLink  className="link-font">Logout</NavLink></li>
+                    </>
+            }
         </>
 
     </>

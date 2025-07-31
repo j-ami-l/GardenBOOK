@@ -45,3 +45,8 @@
   border-radius: 15px;
   color: white;
 }
+
+
+body {
+  background-color: rgba(235, 233, 233, 0.444);
+}

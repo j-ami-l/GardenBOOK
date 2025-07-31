@@ -5,6 +5,7 @@ import Login from "../layouts/Login";
 import SignUp from "../layouts/Singup";
 import PrivateRouter from "./PrivateRouter";
 import ShareTip from "../layouts/ShareTip";
+import MyTips from "../layouts/MyTips";
 
 
 
@@ -30,7 +31,14 @@ export const router = createBrowserRouter([
                 element: <PrivateRouter>
                     <ShareTip></ShareTip>
                 </PrivateRouter>
+            },
+            {
+                path: '/mytips',
+                element: <PrivateRouter>
+                    <MyTips></MyTips>
+                </PrivateRouter>
             }
+        
         ]
     }
 ])
