@@ -13,20 +13,20 @@
   --color-base-100: ;  /* body bg*/
   --color-base-200: #06040A;   /*  */
   --color-base-300: #1c2a23;   
-  --color-base-content: #000000; 
+  --color-base-content: #ffffff; 
 
   --color-primary: #00000;   /*all body text*/
   --color-primary-content: #ffffff;
 
   --color-secondary: #004030;  /* navbar , footer , tranding tips*/
-  --color-secondary-content: #e6f4ea;
+  --color-secondary-content: #030303;
 
   --color-textColor:#1A4D2E;
 
   --color-accent: #000000; /*all navbar and footer text*/     
   --color-accent-content: #ffffff;
 
-  --color-neutral: #F2F1F0; /*white*/   
+  --color-neutral: #161616; /*white*/   
   --color-neutral-content: #F0F1C5;
 
   --radius-selector: 1rem;
@@ -49,7 +49,7 @@
   --color-primary: oklch(62.7% 0.194 149.214);
   --color-primary-content: #ffffff;
 
-  --color-secondary: #E8FFD7;
+  --color-secondary: #E8FFD7; /* navbar , footer , tranding tips*/
   --color-secondary-content: #ECFAE5; /*tables*/
 
   --color-accent: #06040A;
@@ -84,5 +84,16 @@
   border-radius: 15px;
   color: black;
 }
+
+
+/* Apply only on mobile layout */
+@media (max-width: 600px) {
+  
+  .custom-table tr {
+    border-bottom: 2px solid #4b5563 !important;
+    color: gray;
+  }
+}
+
 
 

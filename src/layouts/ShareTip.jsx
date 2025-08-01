@@ -44,7 +44,7 @@ const ShareTip = () => {
                 <form className='' onSubmit={handleSubmit}>
                     <div className="flex gap-2 items-center mb-4">
                         <div className="avatar">
-                            <div className="w-10 rounded-full">
+                            <div className="w-10 rounded-full border-2 border-accent-content">
                                 <img src={user.photoURL} alt="User" />
                             </div>
                         </div>
@@ -54,7 +54,7 @@ const ShareTip = () => {
                             name="name"
                             value={user.displayName}
                             placeholder="Your name"
-                            className="ml-1 text-black focus:outline-0 focus:border-none caret-transparent select-none  focus:ring-0 border-0 w-full max-w-xs  text-2xl font-semibold"
+                            className="ml-1 text-accent-content focus:outline-0 focus:border-none caret-transparent select-none  focus:ring-0 border-0 w-full max-w-xs  text-2xl font-semibold"
                             required
                         />
                     </div>

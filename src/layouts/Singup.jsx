@@ -89,7 +89,7 @@ const SignUp = () => {
     return (
         <div className="min-h-screen my-10 flex items-center justify-center  px-4">
             <div className="w-full max-w-md p-8 shadow-lg bg-secondary-content rounded-lg">
-                <h2 className="text-3xl font-bold text-center text-[#1A4D2E] mb-6">
+                <h2 className="text-3xl font-bold text-center text-accent-content mb-6">
                     Create an Account
                 </h2>
 
@@ -101,11 +101,11 @@ const SignUp = () => {
 
                 <form onSubmit={handleRegister} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <label className="block text-sm font-medium text-accent-content mb-1">Name</label>
                         <input name="name" type="text" className="input bg-neutral input-bordered w-full" placeholder="Your name" required />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Photo URL</label>
+                        <label className="block text-sm font-medium text-accent-content mb-1">Photo URL</label>
                         <input
                             name="photo"
                             type="text"
@@ -115,7 +115,7 @@ const SignUp = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <label className="block text-sm font-medium text-accent-content mb-1">Email</label>
                         <input
                             name="email"
                             type="email"
@@ -126,7 +126,7 @@ const SignUp = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <label className="block text-sm font-medium text-accent-content mb-1">Password</label>
                         <input
                             name="password"
                             type="password"

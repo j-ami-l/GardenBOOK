@@ -8,6 +8,7 @@ import { useState } from 'react';
 
 
 
+
 const MyTipsTable = ({ SingleTip , handleDelete }) => {
     
     const [tip , setTips] = useState(SingleTip)
@@ -19,17 +20,17 @@ const MyTipsTable = ({ SingleTip , handleDelete }) => {
 
     return (
 
-        <Tr key={tip._id} className="border-t hover:bg-gray-50 text-sm text-gray-800">
+        <Tr key={tip._id} className="border-t border-accent-content text-sm text-gray-800">
             <Td className="p-3">
                 <img
                     src={tip.image}
                     alt={tip.title}
-                    className="w-35 h-20 object-cover rounded-md border"
+                    className="w-35 h-20 object-cover rounded-md border border-accent-content"
                 />
             </Td>
-            <Td className="p-3 text-base font-medium">{tip.title}</Td>
-            <Td className="p-3 text-base">{tip.topic}</Td>
-            <Td className="p-3 text-base">{tip.category}</Td>
+            <Td className="p-3 text-accent-content font-medium">{tip.title}</Td>
+            <Td className="p-3 text-accent-content">{tip.topic}</Td>
+            <Td className="p-3 text-accent-content">{tip.category}</Td>
             <Td className="p-3">
                 <span className="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs">
                     {tip.difficulty}
@@ -40,13 +41,14 @@ const MyTipsTable = ({ SingleTip , handleDelete }) => {
                     {tip.availability}
                 </span>
             </Td>
-            <Td className="p-3 text-gray-500"><div className="space-x-2 flex items-center">
+            <Td className="p-3 text-gray-500 "><div className="space-x-2 flex items-center">
                 <div onClick={() => document.getElementById(`${tip._id}modal`).showModal()} className=" border-green-200 cursor-pointer border-2  p-2 rounded-[50%]"><FaPencil
                     size={18}
-                    color='green'></FaPencil></div>
+                    color='' className='text-accent-content'></FaPencil></div>
                 <div onClick={() => handleDelete(tip._id)} className="cursor-pointer border-green-200 border-2  p-2 rounded-[50%]"><MdDelete
                     size={18}
-                    color='green'
+                    color=''
+                    className='text-accent-content'
                 ></MdDelete></div>
             </div></Td>
             <Td>

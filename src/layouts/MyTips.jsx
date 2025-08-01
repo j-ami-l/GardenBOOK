@@ -75,12 +75,12 @@ const MyTips = () => {
     }
 
     return (
-        <div className='my-15 mx-auto w-11/12 px-4 '>
+        <div className='my-15 mx-auto w-11/12 px-4'>
             <div className="overflow-x-auto border rounded-lg shadow-xl">
-                <Table className="w-full bg-secondary-content border-collapse text-left">
+                <Table className="w-full bg-secondary-content border-accent-content md:border-2   text-left custom-table">
                     <Thead className="bg-gray-100">
-                        <Tr className="text-gray-700 text-sm uppercase tracking-wide">
-                            <Th className="p-3">Image</Th>
+                        <Tr className=" text-sm uppercase tracking-wide">
+                            <Th className="p-3 ">Image</Th>
                             <Th className="p-3">Title</Th>
                             <Th className="p-3">Topic</Th>
                             <Th className="p-3">Category</Th>

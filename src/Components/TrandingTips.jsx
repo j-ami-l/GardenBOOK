@@ -21,7 +21,7 @@ const TrandingTips = () => {
         <div className='my-15 mx-auto max-w-screen-xl px-4 '>
             <h1 className='text-3xl text-accent-content font-bold text-center my-10'>Top Tranding Tips</h1>
             <div className="overflow-x-auto border rounded-lg shadow-xl">
-                <Table className="w-full border-collapse text-left bg-secondary-content">
+                <Table className="w-full custom-table border-collapse text-left bg-secondary-content">
                     <Thead className="bg-gray-100">
                         <Tr className="text-gray-700 text-sm uppercase tracking-wide">
                             <Th className="p-3">Author</Th>

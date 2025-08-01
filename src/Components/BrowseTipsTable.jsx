@@ -7,22 +7,22 @@ import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 const BrowseTipsTable = ({ tip }) => {
     
     return (
-        <Tr key={tip._id} className="border-t hover:bg-gray-50 text-sm text-gray-800">
+        <Tr key={tip._id} className="border-t  text-sm text-gray-800">
             <Td className="p-3">
                 <div className='space-y-1'>
                     <div className='btn btn-ghost btn-circle avatar'><div className='w-10 rounded-full'>
-                        <img className='w-10 h-10 rounded-[50%]' src={tip.userImage} alt="" /></div></div>
-                    <h1 className='text-[12px] font-bold'>{tip.name}</h1>
+                        <img className='w-10 h-10 border-accent-content border-2 rounded-[50%]' src={tip.userImage} alt="" /></div></div>
+                    <h1 className='text-[12px] text-accent-content font-bold'>{tip.name}</h1>
                 </div>
             </Td>
             
-            <Td className="p-3 text-base font-medium">{tip.title}</Td>
-            <Td className="p-3 text-base">{tip.topic}</Td>
+            <Td className="p-3 text-accent-content font-medium">{tip.title}</Td>
+            <Td className="p-3 text-accent-content">{tip.topic}</Td>
             <Td className="p-3">
                 <img
                     src={tip.image}
                     alt={tip.title}
-                    className="w-35 h-20 object-cover rounded-md border"
+                    className="w-35 h-20 object-cover border-accent-content rounded-md border"
                 />
             </Td>
             <Td className="p-3">
@@ -32,7 +32,7 @@ const BrowseTipsTable = ({ tip }) => {
             </Td>
             
             <Td className="p-3 text-gray-500"><div className="space-x-2 flex items-center">
-                <Link to={`/tipdetails/${tip._id}`} className='text-green-700 underline'>See more...</Link>
+                <Link to={`/tipdetails/${tip._id}`} className='text-accent-content underline'>See more...</Link>
             </div></Td>
         </Tr >
     );

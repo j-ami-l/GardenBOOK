@@ -76,17 +76,17 @@ const TipDetails = () => {
 
     return (
         <div className='my-10 mx-4'>
-            <div className="bg-white shadow-xl px-4 rounded-xl border border-gray-200 max-w-xl w-full mx-auto mb-6">
+            <div className="bg-secondary-content shadow-xl px-4 rounded-xl border border-gray-200 max-w-xl w-full mx-auto mb-6">
                 <div className="flex items-center justify-between  py-3">
                     <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-full overflow-hidden bg-green-100">
+                        <div className="h-10 w-10 rounded-full border-accent-content border-2 overflow-hidden bg-green-100">
                             <img
                                 src={userImage}
                                 alt="Profile"
-                                className="h-full w-full object-cover"
+                                className="h-full w-full   object-cover"
                             />
                         </div>
-                        <h1>{name}</h1>
+                        <h1 className='text-accent-content'>{name}</h1>
                     </div>
                     <div >
                         {
@@ -100,7 +100,7 @@ const TipDetails = () => {
                         <h2 className='text-green-700 text-center text-xs'>{TotalLike}</h2>
                     </div>
                 </div>
-                <div className="w-full h-60 overflow-hidden rounded-t-md">
+                <div className="w-full h-60 border-accent-content border-2 overflow-hidden rounded-t-md">
                     <img
                         src={image}
                         alt={title}
@@ -108,8 +108,8 @@ const TipDetails = () => {
                     />
                 </div>
                 <div className="px-4 py-4 space-y-3">
-                    <h2 className="text-xl font-semibold text-gray-800">{title}</h2>
-                    <p className="text-sm text-gray-700 leading-relaxed">{description}</p>
+                    <h2 className="text-xl font-semibold text-accent-content">{title}</h2>
+                    <p className="text-sm text-accent-content leading-relaxed">{description}</p>
 
                     <div className="flex flex-wrap gap-2 mt-3">
                         <span className="px-3 py-1 text-xs font-medium bg-blue-50 text-blue-800 rounded-full border border-blue-200">
