@@ -13,7 +13,7 @@ const MyTips = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:3000/mytips", {
+        fetch("http://localhost:5000/mytips", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -46,7 +46,7 @@ const MyTips = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch('http://localhost:3000/delete', {
+                fetch('http://localhost:5000/delete', {
                     method: "DELETE",
                     headers: {
                         "content-type": "application/json"

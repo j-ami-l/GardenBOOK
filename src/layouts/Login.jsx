@@ -23,7 +23,7 @@ const Login = () => {
       });
   };
 
-  const handleGoogleSignIn = () => {
+  const handleGoogleSignUp = () => {
     googleRegister()
       .then((result) => {
         console.log(result);
@@ -90,7 +90,7 @@ const Login = () => {
 
           <button
             type="button"
-            onClick={handleGoogleSignIn}
+            onClick={handleGoogleSignUp}
             className="btn w-full flex items-center gap-3 border hover:bg-[#1A4D2E] hover:text-white"
           >
             <img

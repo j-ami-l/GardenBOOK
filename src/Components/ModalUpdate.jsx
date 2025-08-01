@@ -14,7 +14,7 @@ const ModalUpdate = ({ tip , handeUpdates }) => {
         const formData = new FormData(form);
         const UpdatePost = Object.fromEntries(formData.entries());
 
-        fetch(`http://localhost:3000/mytips/update/${tip._id}`, {
+        fetch(`http://localhost:5000/mytips/update/${tip._id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

@@ -27,12 +27,12 @@ const SignUp = () => {
                 setError(null);
                 updateuser({ displayName: name, photoURL: photo })
                     .then(() => {
-                        fetch("http://localhost:3000/gardenbook/users", {
-                            method: "POST",
+                        fetch('http://localhost:5000/adduser', {
+                            method: 'POST',
                             headers: {
-                                "content-type": "application/json"
+                                'content-type': 'application/json'
                             },
-                            body: JSON.stringify({ displayName: name, email: email, photoURL: photo , likedPost: [1,2,3]})
+                            body: JSON.stringify({ displayName: name, photoURL: photo, email: email, likedPost: [1, 2], role: "" })
                         })
                             .then(res => res.json())
                             .then(result => {
@@ -54,16 +54,12 @@ const SignUp = () => {
         googleRegister()
             .then((result) => {
                 console.log(result);
-                fetch("http://localhost:3000/gardenbook/users", {
-                    method: "POST",
+                fetch('http://localhost:5000/adduser', {
+                    method: 'POST',
                     headers: {
-                        "content-type": "application/json"
+                        'content-type': 'application/json'
                     },
-                    body: JSON.stringify({ displayName: result.user?.displayName,
-                         email: result.user?.email, 
-                         photoURL: result.user?.photoURL,
-                        likedPost: [1,2,3]
-                        })
+                    body: JSON.stringify({ displayName: result?.user?.displayName, photoURL: result?.user?.photoURL, email: result?.user?.email, likedPost: [1, 2], role: "" })
                 })
                     .then(res => res.json())
                     .then(result => {

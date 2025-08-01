@@ -17,7 +17,7 @@ const Navbar = () => {
     const link = <>
         <>
             <li><NavLink to="/" className="link-font">Home</NavLink></li>
-            <li><NavLink to="/explore" className="link-font">Explore Gardeners</NavLink></li>
+            <li><NavLink to="/exploregardener" className="link-font">Explore Gardeners</NavLink></li>
             <li><NavLink to="/browsetips" className="link-font">Browse Tips</NavLink></li>
             <li><NavLink to="/sharetip" className="link-font">Share Tip</NavLink></li>
             <li><NavLink to="/mytips" className="link-font">My Tips</NavLink></li>

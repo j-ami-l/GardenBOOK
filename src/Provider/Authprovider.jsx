@@ -14,26 +14,11 @@ const AuthProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-    const [userOtherInfo , setUserOtherInfo] = useState({})
+    const [userOtherInfo, setUserOtherInfo] = useState({})
 
 
 
-    useEffect(() => {
-        fetch(`http://localhost:3000/user`, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify({ email: user?.email })
-        })
-        .then(res=>res.json())
-        .then(result=>{
-            
-            setUserOtherInfo(result)
-            console.log(userOtherInfo);
-            
-        })
-    }, [user])
+
 
 
     const register = (email, password) => {
@@ -71,6 +56,9 @@ const AuthProvider = ({ children }) => {
             unSubscribe;
         }
     }, [])
+
+
+    
 
 
     const userInfo = {

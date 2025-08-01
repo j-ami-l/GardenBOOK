@@ -1,12 +1,12 @@
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { BiLike } from "react-icons/bi";
 import { BiSolidLike } from "react-icons/bi";
 import { AuthContext } from '../Provider/Authprovider';
 const TipDetails = () => {
-    const { user , userOtherInfo , setUserOtherInfo } = use(AuthContext)
+    const { user } = use(AuthContext)
     const [like, setLike] = useState(false)
-    
+
     const tip = useLoaderData()
     const {
         _id,
@@ -20,15 +20,16 @@ const TipDetails = () => {
         userImage,
         likeCount,
     } = tip;
+    const x = parseInt(likeCount)
+    const [TotalLike , setTotalLike] = useState(x)
 
-    if(!like && userOtherInfo?.likedPost.find(a=> a === _id)){
-        setLike(!like)
-    }
     
 
+
     const handeLike = (id) => {
-        const newlikeCount = parseInt(likeCount) + 1;
-        fetch('http://localhost:3000/gardenbook/userinfo/update', {
+        const newlikeCount = TotalLike + 1;
+        setTotalLike(newlikeCount)
+        fetch('http://localhost:5000/gardenbook/userinfo/update', {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"
@@ -38,18 +39,15 @@ const TipDetails = () => {
             .then(res => res.json())
             .then(result => {
                 console.log(result)
-                const userNewInfo = userOtherInfo
-                userNewInfo.likedPost.push(id);
-                setUserOtherInfo(userNewInfo)
                 setLike(true)
             });
 
-        fetch(`http://localhost:3000/mytips/updatelikecount/${_id}`, {
+        fetch(`http://localhost:5000/mytips/updatelikecount/${_id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify({likeCount : newlikeCount})
+            body: JSON.stringify({ likeCount: newlikeCount })
         })
             .then(res => res.json())
             .then(result => {
@@ -74,7 +72,10 @@ const TipDetails = () => {
                     <div >
                         {
                             like ?
-                                <BiSolidLike size={25}></BiSolidLike>
+                                <div className='flex flex-col-reverse items-center'>
+                                    <h2 className='text-green-700 text-xs'>{TotalLike}</h2>
+                                    <BiSolidLike color='green' size={25}></BiSolidLike>
+                                </div>
                                 :
                                 <BiLike onClick={() => handeLike(_id)} size={25}></BiLike>
                         }
