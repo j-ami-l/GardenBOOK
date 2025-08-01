@@ -27,9 +27,9 @@ const MyTipsTable = ({ SingleTip , handleDelete }) => {
                     className="w-35 h-20 object-cover rounded-md border"
                 />
             </Td>
-            <Td className="p-3 font-medium">{tip.title}</Td>
-            <Td className="p-3">{tip.topic}</Td>
-            <Td className="p-3">{tip.category}</Td>
+            <Td className="p-3 text-base font-medium">{tip.title}</Td>
+            <Td className="p-3 text-base">{tip.topic}</Td>
+            <Td className="p-3 text-base">{tip.category}</Td>
             <Td className="p-3">
                 <span className="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs">
                     {tip.difficulty}

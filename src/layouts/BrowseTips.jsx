@@ -15,9 +15,9 @@ const BrowseTips = () => {
     
     return (
         <div className='my-15 mx-auto w-11/12 px-4 '>
-            <h1 className='text-3xl font-bold text-center mb-10 text-primary'>All Tips</h1>
+            <h1 className='text-3xl font-bold text-center mb-10 text-accent-content'>All Tips</h1>
             <div className="overflow-x-auto border rounded-lg shadow-xl">
-                <Table className="w-full border-collapse bg-secondary text-left">
+                <Table className="w-full border-collapse bg-secondary-content text-left">
                     <Thead className="bg-gray-100">
                         <Tr className="text-gray-700 text-sm uppercase tracking-wide">
                             <Th className="p-3">Author</Th>

@@ -18,16 +18,16 @@
   --color-primary: #00000;   /*all body text*/
   --color-primary-content: #ffffff;
 
-  --color-secondary: #dcfce7;  /* navbar , footer , tranding tips*/
+  --color-secondary: #004030;  /* navbar , footer , tranding tips*/
   --color-secondary-content: #e6f4ea;
 
-  --color-textColor:#06040A;
+  --color-textColor:#1A4D2E;
 
   --color-accent: #000000; /*all navbar and footer text*/     
   --color-accent-content: #ffffff;
 
   --color-neutral: #F2F1F0; /*white*/   
-  --color-neutral-content: #e6f4ea;
+  --color-neutral-content: #F0F1C5;
 
   --radius-selector: 1rem;
   --radius-field: 0.25rem;
@@ -49,14 +49,14 @@
   --color-primary: oklch(62.7% 0.194 149.214);
   --color-primary-content: #ffffff;
 
-  --color-secondary: #6c757d;
-  --color-secondary-content: #ffffff;
+  --color-secondary: #E8FFD7;
+  --color-secondary-content: #ECFAE5; /*tables*/
 
   --color-accent: #06040A;
-  --color-accent-content: #ffffff;
+  --color-accent-content: #000000;
 
   --color-neutral: #f0f0f0;
-  --color-neutral-content: #1a1a1a;
+  --color-neutral-content: #F0F1C5;
 
   --radius-selector: 1rem;
   --radius-field: 0.25rem;
@@ -80,9 +80,9 @@
 }
 
 .active {
-  background-color: #1A4D2E;
+  background-color: #A3DC9A;
   border-radius: 15px;
-  color: white;
+  color: black;
 }
 
 

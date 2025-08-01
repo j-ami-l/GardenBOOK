@@ -16,8 +16,8 @@ const BrowseTipsTable = ({ tip }) => {
                 </div>
             </Td>
             
-            <Td className="p-3 font-medium">{tip.title}</Td>
-            <Td className="p-3">{tip.topic}</Td>
+            <Td className="p-3 text-base font-medium">{tip.title}</Td>
+            <Td className="p-3 text-base">{tip.topic}</Td>
             <Td className="p-3">
                 <img
                     src={tip.image}
@@ -26,7 +26,7 @@ const BrowseTipsTable = ({ tip }) => {
                 />
             </Td>
             <Td className="p-3">
-                <span className="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs">
+                <span className="px-2 py-1 bg-yellow-100 text-red-900 text-sm rounded">
                     {tip.difficulty}
                 </span>
             </Td>

@@ -23,7 +23,7 @@ const ActiveGardeners = () => {
 
     return (
         <div>
-            <h1 className="text-2xl md:text-4xl text-neutral text-center my-20">
+            <h1 className="text-2xl md:text-4xl text-accent-content text-center my-20">
                 Our Active Gardeners
             </h1>
             <Suspense fallback={<h1>ladig</h1>}>
@@ -35,7 +35,7 @@ const ActiveGardeners = () => {
                     </Marquee>
                 </div>
             </Suspense>
-            <Link to={'/exploregardener'}><div className='flex items-center justify-center my-6'><button className='btn hover:bg-green-700 bg-neutral hover:text-white text-center'>Explore Gardeners</button></div></Link>
+            <Link to={'/exploregardener'}><div className='flex items-center justify-center my-15'><button className='btn hover:bg-green-700 bg-neutral hover:text-white text-center'>Explore Gardeners</button></div></Link>
         </div>
     );
 };

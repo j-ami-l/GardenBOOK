@@ -40,7 +40,7 @@ const ShareTip = () => {
 
     return (
         <div className="max-w-2xl mx-5 md:mx-auto my-30">
-            <div className="card bg-secondary shadow-md p-6">
+            <div className="card bg-secondary-content shadow-md p-6">
                 <form className='' onSubmit={handleSubmit}>
                     <div className="flex gap-2 items-center mb-4">
                         <div className="avatar">
@@ -54,7 +54,7 @@ const ShareTip = () => {
                             name="name"
                             value={user.displayName}
                             placeholder="Your name"
-                            className="ml-1 text-primary focus:outline-0 focus:border-none caret-transparent select-none  focus:ring-0 border-0 w-full max-w-xs  text-2xl font-semibold"
+                            className="ml-1 text-black focus:outline-0 focus:border-none caret-transparent select-none  focus:ring-0 border-0 w-full max-w-xs  text-2xl font-semibold"
                             required
                         />
                     </div>
