@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../Provider/Authprovider';
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
     const { register, updateuser, googleRegister } = useContext(AuthContext);
@@ -17,6 +19,11 @@ const SignUp = () => {
             setError(
                 'Password must have at least 1 uppercase, 1 lowercase, 1 digit, and be at least 8 characters.'
             );
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: error,
+            });
             return;
         }
 
@@ -25,9 +32,10 @@ const SignUp = () => {
             .then((result) => {
                 console.log(result);
                 setError(null);
+                toast.success("Logged In Successfully")
                 updateuser({ displayName: name, photoURL: photo })
                     .then(() => {
-                        fetch('http://localhost:5000/adduser', {
+                        fetch('https://garden-book-server-site-2.vercel.app/adduser', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -42,11 +50,13 @@ const SignUp = () => {
                     })
                     .catch((err) => {
                         setError(err.message);
+                        toast.error(error)
                     });
                 form.reset();
             })
             .catch((err) => {
                 setError(err.message);
+                toast.error(error)
             });
     };
 
@@ -54,7 +64,7 @@ const SignUp = () => {
         googleRegister()
             .then((result) => {
                 console.log(result);
-                fetch('http://localhost:5000/adduser', {
+                fetch('https://garden-book-server-site-2.vercel.app/adduser', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -66,16 +76,19 @@ const SignUp = () => {
                         console.log(result);
 
                     })
+                toast.success("Logged In Successfully")
                 setError(null);
             })
             .catch((err) => {
                 setError(err.message);
+                toast.error(error)
             });
     };
 
+
     return (
         <div className="min-h-screen my-10 flex items-center justify-center  px-4">
-            <div className="w-full max-w-md p-8 shadow-lg bg-white rounded-lg">
+            <div className="w-full max-w-md p-8 shadow-lg bg-secondary rounded-lg">
                 <h2 className="text-3xl font-bold text-center text-[#1A4D2E] mb-6">
                     Create an Account
                 </h2>
@@ -89,14 +102,14 @@ const SignUp = () => {
                 <form onSubmit={handleRegister} className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                        <input name="name" type="text" className="input input-bordered w-full" placeholder="Your name" required />
+                        <input name="name" type="text" className="input bg-neutral input-bordered w-full" placeholder="Your name" required />
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Photo URL</label>
                         <input
                             name="photo"
                             type="text"
-                            className="input input-bordered w-full"
+                            className="input input-bordered bg-neutral w-full"
                             placeholder="Photo URL"
                         />
                     </div>
@@ -106,7 +119,7 @@ const SignUp = () => {
                         <input
                             name="email"
                             type="email"
-                            className="input input-bordered w-full"
+                            className="input input-bordered bg-neutral w-full"
                             placeholder="example@mail.com"
                             required
                         />
@@ -117,7 +130,7 @@ const SignUp = () => {
                         <input
                             name="password"
                             type="password"
-                            className="input input-bordered w-full"
+                            className="input input-bordered bg-neutral w-full"
                             placeholder="••••••••"
                             required
                         />
@@ -135,7 +148,7 @@ const SignUp = () => {
                     <button
                         type="button"
                         onClick={handleGoogleSignUp}
-                        className="btn w-full flex items-center gap-3 border hover:bg-[#1A4D2E] hover:text-white"
+                        className="btn w-full flex items-center bg-neutral gap-3 border hover:bg-[#1A4D2E] hover:text-white"
                     >
                         <img
                             src="https://www.svgrepo.com/show/475656/google-color.svg"

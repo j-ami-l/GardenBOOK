@@ -1,23 +1,27 @@
-import React from 'react';
-import { useLoaderData } from 'react-router';
+import React, { useEffect, useState } from 'react';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
-import BrowseTipsTable from '../Components/BrowseTipsTable';
-import Loading from '../Components/Loading';
+import BrowseTipsTable from './BrowseTipsTable';
 
-const BrowseTips = () => {
-    const allTips = useLoaderData()
-    
+const TrandingTips = () => {
+    const [topFour, setTopFour] = useState([]);
 
-    if(!allTips){
-        return <Loading></Loading>
-    }
-    
+    useEffect(() => {
+        fetch('https://garden-book-server-site-2.vercel.app/browsetips')
+            .then(res => res.json())
+            .then(data => {
+                data.sort((a, b) => Number(b.likeCount) - Number(a.likeCount));
+                setTopFour(data.slice(0, 4));
+            })
+    }, []);
+
+    console.log(topFour);
+
     return (
-        <div className='my-15 mx-auto w-11/12 px-4 '>
-            <h1 className='text-3xl font-bold text-center mb-10 text-primary'>All Tips</h1>
+        <div className='my-15 mx-auto max-w-screen-xl px-4 '>
+            <h1 className='text-3xl text-neutral font-bold text-center my-10'>Top Tranding Tips</h1>
             <div className="overflow-x-auto border rounded-lg shadow-xl">
-                <Table className="w-full border-collapse bg-secondary text-left">
+                <Table className="w-full border-collapse text-left bg-secondary">
                     <Thead className="bg-gray-100">
                         <Tr className="text-gray-700 text-sm uppercase tracking-wide">
                             <Th className="p-3">Author</Th>
@@ -29,7 +33,7 @@ const BrowseTips = () => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {allTips?.map((tip) => (
+                        {topFour?.map((tip) => (
                                 <BrowseTipsTable key={tip._id} tip={tip}></BrowseTipsTable>
                         ))}
                     </Tbody>
@@ -40,4 +44,4 @@ const BrowseTips = () => {
     );
 };
 
-export default BrowseTips;
+export default TrandingTips;

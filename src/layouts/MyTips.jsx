@@ -1,33 +1,39 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../Provider/Authprovider';
+import React, { use, useContext, useEffect, useState } from 'react';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import MyTipsTable from '../Components/MyTipsTable';
 import Swal from 'sweetalert2';
+import Loading from '../Components/Loading';
+import { AuthContext } from '../provider/Authprovider';
 
 const MyTips = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = use(AuthContext);
     const [mytips, setMytips] = useState([]);
 
-    const userMail = user.email;
+
+    console.log(user);
+
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/mytips", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify({ email: userMail })
-        })
-            .then(res => res.json())
-            .then(result => {
-                setMytips(result);
-            });
-    }, [userMail]);
+
+        if (user) {
+            fetch("https://garden-book-server-site-2.vercel.app/mytips", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify({ email: user?.email })
+            })
+                .then(res => res?.json())
+                .then(result => {
+                    setMytips(result);
+                });
+        }
+    }, [user]);
 
 
-    
+
 
 
     const handleDelete = (id) => {
@@ -46,7 +52,7 @@ const MyTips = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch('http://localhost:5000/delete', {
+                fetch('https://garden-book-server-site-2.vercel.app/delete', {
                     method: "DELETE",
                     headers: {
                         "content-type": "application/json"
@@ -69,9 +75,9 @@ const MyTips = () => {
     }
 
     return (
-        <div className='my-15 mx-auto max-w-screen-xl px-4 '>
+        <div className='my-15 mx-auto w-11/12 px-4 '>
             <div className="overflow-x-auto border rounded-lg shadow-xl">
-                <Table className="w-full border-collapse text-left">
+                <Table className="w-full bg-secondary border-collapse text-left">
                     <Thead className="bg-gray-100">
                         <Tr className="text-gray-700 text-sm uppercase tracking-wide">
                             <Th className="p-3">Image</Th>
@@ -84,7 +90,7 @@ const MyTips = () => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {mytips.map((SingleTip) => (
+                        {mytips?.map((SingleTip) => (
                             <MyTipsTable key={SingleTip._id}
                                 handleDelete={handleDelete}
                                 SingleTip={SingleTip}></MyTipsTable>

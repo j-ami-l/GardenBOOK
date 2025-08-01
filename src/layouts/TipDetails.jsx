@@ -21,15 +21,34 @@ const TipDetails = () => {
         likeCount,
     } = tip;
     const x = parseInt(likeCount)
-    const [TotalLike , setTotalLike] = useState(x)
+    const [TotalLike, setTotalLike] = useState(x)
 
-    
+
+    useEffect(() => {
+        fetch('https://garden-book-server-site-2.vercel.app/user', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ email: user?.email })
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.likedPost.find(p => p == _id)) {
+                    setLike(true)
+                }
+
+            })
+    }, [user, _id])
+
+
+
 
 
     const handeLike = (id) => {
         const newlikeCount = TotalLike + 1;
         setTotalLike(newlikeCount)
-        fetch('http://localhost:5000/gardenbook/userinfo/update', {
+        fetch('https://garden-book-server-site-2.vercel.app/gardenbook/userinfo/update', {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"
@@ -42,7 +61,7 @@ const TipDetails = () => {
                 setLike(true)
             });
 
-        fetch(`http://localhost:5000/mytips/updatelikecount/${_id}`, {
+        fetch(`https://garden-book-server-site-2.vercel.app/updatelikecount/${_id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"
@@ -73,12 +92,12 @@ const TipDetails = () => {
                         {
                             like ?
                                 <div className='flex flex-col-reverse items-center'>
-                                    <h2 className='text-green-700 text-xs'>{TotalLike}</h2>
                                     <BiSolidLike color='green' size={25}></BiSolidLike>
                                 </div>
                                 :
                                 <BiLike onClick={() => handeLike(_id)} size={25}></BiLike>
                         }
+                        <h2 className='text-green-700 text-center text-xs'>{TotalLike}</h2>
                     </div>
                 </div>
                 <div className="w-full h-60 overflow-hidden rounded-t-md">

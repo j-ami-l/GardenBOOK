@@ -4,7 +4,7 @@ import { AuthContext } from '../Provider/Authprovider';
 const AddGardeners = () => {
 
 
-    const {user , userOtherInfo} = use(AuthContext)
+    const { user, userOtherInfo } = use(AuthContext)
     const HandleSubmit = e => {
         e.preventDefault();
 
@@ -13,7 +13,7 @@ const AddGardeners = () => {
         const formData = new FormData(form)
         const newGardener = Object.fromEntries(formData.entries())
 
-        fetch("http://localhost:5000/gardeners", {
+        fetch("https://garden-book-server-site-2.vercel.app/addgardeners", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

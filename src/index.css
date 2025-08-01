@@ -1,52 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400&display=swap');
 @import "tailwindcss";
+@plugin "daisyui";
 
-
-
-
-@plugin "daisyui"{
-  themes: light --default;
-}
+/* ✅ Custom Black Theme */
+/* 🌲 Custom Dark Forest Theme */
 @plugin "daisyui/theme" {
-  name: "#E8FFD7";
-  default: true;
-  --color-primary: #403F3F;
-  --color-secondary: #D72050;
-  --color-base-200: #F3F3F3;
-  --color-base-300: #E7E7E7;
-  --color-accent: #706F6F;
+  name: "blacktheme";
+  color-scheme: dark;
+  prefersdark: true;
 
+  /* 🌑 Dark forest base */
+  --color-base-100: ;  /* body bg*/
+  --color-base-200: #06040A;   /*  */
+  --color-base-300: #1c2a23;   
+  --color-base-content: #000000; 
+
+  --color-primary: #00000;   /*all body text*/
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #dcfce7;  /* navbar , footer , tranding tips*/
+  --color-secondary-content: #e6f4ea;
+
+  --color-textColor:#06040A;
+
+  --color-accent: #000000; /*all navbar and footer text*/     
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #F2F1F0; /*white*/   
+  --color-neutral-content: #e6f4ea;
+
+  --radius-selector: 1rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
 }
 
-*{
-  font-family: "Poppins", sans-serif;
+
+/* ✅ Custom Light Theme */
+@plugin "daisyui/theme" {
+  name: "lighttheme";
+  color-scheme: light;
+  prefersdark: false;
+
+  --color-base-100: #ffffff;
+  --color-base-200: #f7f7f7;
+  --color-base-300: #e5e5e5;
+  --color-base-content: #1a1a1a;
+
+  --color-primary: oklch(62.7% 0.194 149.214);
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #6c757d;
+  --color-secondary-content: #ffffff;
+
+  --color-accent: #06040A;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #f0f0f0;
+  --color-neutral-content: #1a1a1a;
+
+  --radius-selector: 1rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
 }
 
+/* ✅ Enable Both Themes */
+@plugin "daisyui" {
+  themes: lighttheme blacktheme;
+}
+
+
+* {
+  font-family: "Nunito Sans", sans-serif;
+}
 
 .link-font {
   margin-right: 20px;
   font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 400;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;
 }
-
-
 
 .active {
   background-color: #1A4D2E;
-  padding-right: 20px;
-  padding-left: 20px;
   border-radius: 15px;
   color: white;
 }
 
 
-body {
-  background-color: rgba(235, 233, 233, 0.444);
-}

@@ -1,11 +1,15 @@
 import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import logo from '../../assets/logo.png'
+import logo2 from '../../assets/logo2.png'
 import { AuthContext } from '../../Provider/Authprovider';
+
+const currentTheme = document.documentElement.getAttribute("data-theme");
 
 const Navbar = () => {
 
     const { user, logout } = use(AuthContext)
+
 
     const handlelogout = () => {
         logout()
@@ -16,7 +20,7 @@ const Navbar = () => {
 
     const link = <>
         <>
-            <li><NavLink to="/" className="link-font">Home</NavLink></li>
+            <li className=''><NavLink to="/" className="link-font">Home</NavLink></li>
             <li><NavLink to="/exploregardener" className="link-font">Explore Gardeners</NavLink></li>
             <li><NavLink to="/browsetips" className="link-font">Browse Tips</NavLink></li>
             <li><NavLink to="/sharetip" className="link-font">Share Tip</NavLink></li>
@@ -38,24 +42,29 @@ const Navbar = () => {
 
 
     return (
-        <div className="navbar bg-base-100 shadow-sm  shadow-[#228B2230] ">
+        <div className="navbar bg-secondary shadow-sm  shadow-[#228B2230] ">
             <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-base-100" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
                 </div>
                 <ul
                     tabIndex={0}
-                    className="menu  menu-sm dropdown-content  rounded-box z-1 bg-[#E8DFCA] space-y-3 w-52 p-2 shadow">
+                    className="menu   menu-sm dropdown-content  rounded-box z-1  space-y-3 w-52 p-2 shadow">
                     {
                         link
                     }
                 </ul>
             </div>
             <div className="mx-auto  md:mx-0 md:flex-1">
-                <Link to={'/'}><img className='w-50' src={logo} alt="" /></Link>
+                <Link to={'/'}><img
+                    className="w-50"
+                    src={logo}
+                    alt=""
+                />
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal text-accent font-bold text-[16px] px-1">
                     {
                         link
                     }
@@ -63,18 +72,15 @@ const Navbar = () => {
             </div>
 
             <div className="flex-none md:mr-5 group relative">
-                    <div role="" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img
-                                alt="Tailwind CSS Navbar component"
-                                src={user ? user.photoURL : "https://img.icons8.com/?size=100&id=14736&format=png&color=000000"} />
-                        </div>
+
+                <div role="" className="btn btn-ghost btn-circle avatar">
+                    <div className="w-10 rounded-full">
+                        <img
+                            alt="Tailwind CSS Navbar component"
+                            src={user ? user.photoURL : "https://img.icons8.com/?size=100&id=14736&format=png&color=000000"} />
                     </div>
-                    <div className="absolute rounded-2xl -left-10 inset-0 bg-green-800 text-white bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 ">
-                        <p className="text-white text-xs  font-semibold text-center">
-                            {user ? user.displayName : "User"}
-                        </p>
-                    </div>
+                </div>
+                <input type="checkbox"  value="blacktheme" className="toggle theme-controller" />
             </div>
 
         </div>
