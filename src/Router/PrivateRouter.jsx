@@ -7,11 +7,14 @@ import { UserInfoContext } from '../Provider/UserInfoProvider';
 const PrivateRouter = ({children}) => {
 
     const {user , loading } = use(AuthContext)
+    const {userData} = use(UserInfoContext)
     
     const location = useLocation()
     if(loading) return <Loading></Loading>
 
     if(!user)
+        return <Navigate to={'/login'} state={{from : location}}></Navigate>
+    if(!userData)
         return <Navigate to={'/login'} state={{from : location}}></Navigate>
 
 

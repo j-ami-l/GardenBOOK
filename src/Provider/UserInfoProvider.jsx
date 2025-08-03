@@ -30,9 +30,11 @@ const UserInfoProvider = ({ children }) => {
 
     }, [user])
 
+    if(!user && userData) setUserData(null)
+
 
     const value = {
-        user , userData , loadingUserData
+        user , userData , loadingUserData , setUserData
     }
 
     return (

@@ -12,7 +12,7 @@ const Navbar = () => {
     const [Logout, setLogout] = useState(false)
     const { user, logout } = use(AuthContext)
     const [ThemeLogo, setThemeLogo] = useState(false)
-    const { userData } = use(UserInfoContext)
+    const { userData, setUserData } = use(UserInfoContext)
 
 
     const handlelogout = () => {
@@ -102,7 +102,9 @@ const Navbar = () => {
                             <span className="label-text text-xl">Dark</span>
                         </label>
                     </li>
-                    <li onClick={handlelogout}><a className='text-xl'>Logout</a></li>
+                    {
+                        user && <li onClick={handlelogout}><a className='text-xl'>Logout</a></li>
+                    }
                 </ul>
             </div>
 
