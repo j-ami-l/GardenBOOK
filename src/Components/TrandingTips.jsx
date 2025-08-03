@@ -15,7 +15,6 @@ const TrandingTips = () => {
             })
     }, []);
 
-    console.log(topFour);
 
     return (
         <div className='my-15 mx-auto max-w-screen-xl px-4 '>

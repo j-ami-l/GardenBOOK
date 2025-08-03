@@ -1,45 +1,29 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { use, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { BiLike } from "react-icons/bi";
 import { BiSolidLike } from "react-icons/bi";
 import { AuthContext } from '../Provider/Authprovider';
+import { UserInfoContext } from '../Provider/UserInfoProvider';
 const TipDetails = () => {
     const { user } = use(AuthContext)
-    const [like, setLike] = useState(false)
-
+    const { userData } = use(UserInfoContext)
     const tip = useLoaderData()
-    const {
-        _id,
-        title,
-        topic,
-        category,
-        description,
-        name,
-        image,
-        difficulty,
-        userImage,
-        likeCount,
-    } = tip;
-    const x = parseInt(likeCount)
+    const [like, setLike] = useState(false)
     const [TotalLike, setTotalLike] = useState(x)
 
+    const { _id,title,topic,category,description,name,image,difficulty,userImage,likeCount} = tip;
+    const x = parseInt(likeCount)
 
-    useEffect(() => {
-        fetch('https://garden-book-server-site-2.vercel.app/user', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ email: user?.email })
-        })
-            .then(res => res.json())
-            .then(result => {
-                if (result.likedPost.find(p => p == _id)) {
-                    setLike(true)
-                }
 
-            })
-    }, [user, _id])
+    
+
+    
+
+    if (userData?.likedPost) {
+        if (userData.likedPost.find(p => p == _id) && !like) {
+            setLike(true)
+        }
+    }
 
 
 

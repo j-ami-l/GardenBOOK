@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router';
 import logo from '../../assets/logo.png'
 import logo2 from '../../assets/logo2.png'
 import { AuthContext } from '../../Provider/Authprovider';
+import { UserInfoContext } from '../../Provider/UserInfoProvider';
 
 const currentTheme = document.documentElement.getAttribute("data-theme");
 
@@ -10,6 +11,10 @@ const Navbar = () => {
 
     const { user, logout } = use(AuthContext)
     const [ThemeLogo , setThemeLogo ] = useState(false)
+    const {userData} = use(UserInfoContext)
+
+    console.log(userData?.displayName);
+    
 
 
     const handlelogout = () => {
@@ -19,7 +24,6 @@ const Navbar = () => {
 
     }
 
-    console.log(ThemeLogo);
     
 
     const link = <>

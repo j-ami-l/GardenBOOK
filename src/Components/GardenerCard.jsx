@@ -9,7 +9,7 @@ const GardenerCard = ({ gardenere }) => {
       : "bg-red-100 text-red-700 border-red-300";
 
   return (
-    <div className="w-11/12 bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out">
+    <div className="w-11/12 bg-secondary-content border border-gray-200 rounded-2xl shadow-lg overflow-hidden transform ">
 
       <div className="h-48 w-full overflow-hidden">
         <img
@@ -21,9 +21,9 @@ const GardenerCard = ({ gardenere }) => {
 
       <div className="p-5">
         <h2 className="text-xl font-semibold text-green-800">{name}</h2>
-        <p className="text-sm text-gray-600">🌱 {experiences} of gardening</p>
+        <p className="text-sm text-accent-content">🌱 {experiences} of gardening</p>
 
-        <div className="mt-2 text-gray-700 space-y-1 text-sm">
+        <div className="mt-2 text-accent-content space-y-1 text-sm">
           <p>👤 <span className="font-medium">{Gender}</span>, Age: {age}</p>
           <p>🌿 Shared Tips: <span className="font-medium">{totalSharedTips}</span></p>
         </div>

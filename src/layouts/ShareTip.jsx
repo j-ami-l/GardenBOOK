@@ -74,7 +74,7 @@ const ShareTip = () => {
                         <input type="email" readOnly name="email" value={user.email} placeholder="" className="input input-bordered bg-neutral w-full" />
                         <input className='hidden' readOnly name='userImage' type="text" value={user.photoURL} />
                         <input type="number" className='hidden' readOnly name='likeCount' value={0} />
-                        <input type="text" name="image" placeholder="Image URL" className="input input-bordered bg-neutral w-full" />
+                        <input type="text" name="image" defaultValue={"https://i.ibb.co/bjST9zR3/images.jpg"} placeholder="Image URL" className="input input-bordered bg-neutral w-full" />
                         <div className='flex gap-1 w-full'>
                             <select name="difficulty" defaultValue={""} className="select select-bordered bg-neutral" required>
                                 <option value="" disabled>Difficulty</option>
