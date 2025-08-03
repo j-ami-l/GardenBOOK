@@ -3,7 +3,7 @@ import { FaFacebookF,FaGithub, FaTwitter, FaInstagram, FaPhoneAlt, FaEnvelope, F
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary text-accent-content px-10 py-14">
+    <footer className="bg-secondary text-accent-content px-10 py-14 mt-30">
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div className='flex flex-col md:items-center'>
           <h6 className="footer-title mb-4 ">Contact Us</h6>

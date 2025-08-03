@@ -3,7 +3,7 @@ import React from 'react';
 const MostlyAsked = () => {
     return (
         <div>
-            <h1 className="text-2xl md:text-4xl text-accent-content text-center my-20">
+            <h1 className="text-2xl md:text-4xl text-accent-content text-center my-20 ">
                 Mostly Asked Questions
             </h1>
             <div className="collapse bg-secondary-content border-base-300 border ">

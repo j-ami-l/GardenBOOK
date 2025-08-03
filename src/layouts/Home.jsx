@@ -4,6 +4,7 @@ import ActiveGardeners from '../Components/ActiveGardeners';
 import TrandingTips from '../Components/TrandingTips';
 import Example from '../Components/Example';
 import MostlyAsked from '../Components/MostlyAsked';
+import GeneralTips from '../Components/GeneralTips';
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
                 <ActiveGardeners></ActiveGardeners>
             </div>
             <TrandingTips></TrandingTips>
+            <GeneralTips></GeneralTips>
             <MostlyAsked></MostlyAsked>
         </div>
     );

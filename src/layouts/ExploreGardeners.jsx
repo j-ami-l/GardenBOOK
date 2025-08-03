@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import AddGardeners from './AddGardeners';
 import { AuthContext } from '../Provider/Authprovider';
 import GardenerCard from '../Components/GardenerCard';
 import Loading from '../Components/Loading';
+import { UserInfoContext } from '../Provider/UserInfoProvider';
 
 const ExploreGardeners = () => {
 
     const [gardeneres, setGardenres] = useState([])
 
-
+    const {userData} = use(UserInfoContext)
 
     useEffect(() => {
         fetch('https://garden-book-server-site-2.vercel.app/gardeners', {
@@ -34,7 +35,7 @@ const ExploreGardeners = () => {
                     gardeneres?.map(gardenere => <GardenerCard key={gardenere._id} gardenere={gardenere}></GardenerCard>)
                 }
             </div>
-
+            {userData?.role === "admin" && <AddGardeners></AddGardeners>}
         </div>
     );
 };
