@@ -1,4 +1,4 @@
-import React, { Suspense, use, useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import GardenerCard from './GardenerCard';
 import Marquee from 'react-fast-marquee';
 import { Link } from 'react-router';

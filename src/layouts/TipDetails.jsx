@@ -4,26 +4,33 @@ import { BiLike } from "react-icons/bi";
 import { BiSolidLike } from "react-icons/bi";
 import { AuthContext } from '../Provider/Authprovider';
 import { UserInfoContext } from '../Provider/UserInfoProvider';
+import ERROR from '../Components/ERROR';
 const TipDetails = () => {
     const { user } = use(AuthContext)
     const { userData } = use(UserInfoContext)
     const tip = useLoaderData()
+
+
     const [like, setLike] = useState(false)
+    //const [time, setTime] = useState(null)
+
+    const { _id, title, topic, category, description, name, image, difficulty, userImage, likeCount } = tip;
+    const x = parseInt(likeCount)
     const [TotalLike, setTotalLike] = useState(x)
 
-    const { _id,title,topic,category,description,name,image,difficulty,userImage,likeCount} = tip;
-    const x = parseInt(likeCount)
-
-
-    
-
-    
 
     if (userData?.likedPost) {
         if (userData.likedPost.find(p => p == _id) && !like) {
             setLike(true)
         }
     }
+
+    if (tip.error) {
+        return <ERROR></ERROR>
+    }
+
+
+    // const timeDiff = new Date() - postTimedata;
 
 
 
@@ -39,11 +46,11 @@ const TipDetails = () => {
             },
             body: JSON.stringify({ email: user.email, id: id })
         })
-            .then(res => res.json())
-            .then(result => {
-                console.log(result)
-                setLike(true)
-            });
+        .then()
+        .then(()=>{
+            setLike(true)
+        })
+
 
         fetch(`https://garden-book-server-site-2.vercel.app/updatelikecount/${_id}`, {
             method: "PATCH",
@@ -52,10 +59,7 @@ const TipDetails = () => {
             },
             body: JSON.stringify({ likeCount: newlikeCount })
         })
-            .then(res => res.json())
-            .then(result => {
-                console.log(result)
-            });
+
     }
 
     return (
@@ -70,7 +74,10 @@ const TipDetails = () => {
                                 className="h-full w-full   object-cover"
                             />
                         </div>
-                        <h1 className='text-accent-content'>{name}</h1>
+                        <div>
+                            <h1 className='text-accent-content text-xl font-black'>{name}</h1>
+                            <h3 className='text-xs font-bold'></h3>
+                        </div>
                     </div>
                     <div >
                         {

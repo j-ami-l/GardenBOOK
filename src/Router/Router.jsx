@@ -10,6 +10,7 @@ import BrowseTips from "../layouts/BrowseTips";
 import TipDetails from "../layouts/TipDetails";
 import ExploreGardeners from "../layouts/ExploreGardeners";
 import Loading from "../Components/Loading";
+import ERROR from "../Components/ERROR";
 
 
 
@@ -48,9 +49,9 @@ export const router = createBrowserRouter([
                 hydrateFallbackElement: <Loading></Loading>,
                 loader : ()=> fetch('https://garden-book-server-site-2.vercel.app/browsetips').then(res=>res.json())
             },
-            {
+             {
                 path: "/tipdetails/:id",
-                loader : ({params}) => fetch(`https://garden-book-server-site-2.vercel.app/tipdetails/${params.id}`),
+                loader : ({params}) => fetch(`http://localhost:5000/tipdetails/${params.id}`),
                 hydrateFallbackElement: <Loading></Loading>,
                 element: <PrivateRouter>
                     <TipDetails></TipDetails>
@@ -60,9 +61,11 @@ export const router = createBrowserRouter([
             {
                 path:'/exploregardener',
                 element: <ExploreGardeners></ExploreGardeners>
-            },
-            
-        
+            }
         ]
+    },
+    {
+        path: '/*',
+        element: <ERROR></ERROR>
     }
 ])

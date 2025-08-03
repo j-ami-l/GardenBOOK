@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import BrowseTipsTable from './BrowseTipsTable';
+import { Typewriter } from 'react-simple-typewriter';
 
 const TrandingTips = () => {
     const [topFour, setTopFour] = useState([]);
@@ -18,7 +19,7 @@ const TrandingTips = () => {
 
     return (
         <div className='my-15 mx-auto max-w-screen-xl px-4 '>
-            <h1 className='text-3xl text-accent-content font-bold text-center my-10'>Top Tranding Tips</h1>
+            <h1 className='text-3xl text-accent-content font-bold text-center my-10'><Typewriter words={["Hi", "Everyone", "Welcome", "To", "Top Tranding Tips Sction"]} typeSpeed={30}> </Typewriter></h1>
             <div className="overflow-x-auto border rounded-lg shadow-xl">
                 <Table className="w-full custom-table border-collapse text-left bg-secondary-content">
                     <Thead className="bg-gray-100">

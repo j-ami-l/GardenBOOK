@@ -1,4 +1,4 @@
-import React, { use, useContext, useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import MyTipsTable from '../Components/MyTipsTable';
@@ -10,8 +10,6 @@ const MyTips = () => {
     const { user } = use(AuthContext);
     const [mytips, setMytips] = useState([]);
 
-
-    console.log(user);
 
 
 
@@ -37,7 +35,7 @@ const MyTips = () => {
 
 
     const handleDelete = (id) => {
-        console.log(id);
+     
 
         Swal.fire({
             title: "Are you sure?",
@@ -60,8 +58,7 @@ const MyTips = () => {
                     body: JSON.stringify({ id })
                 })
                     .then(res => res.json())
-                    .then(result => {
-                        console.log(result);
+                    .then(() => {
                         const newTips = mytips.filter(p => p._id !== id)
                         setMytips(newTips)
                     })
@@ -77,9 +74,9 @@ const MyTips = () => {
     return (
         <div className='my-15 mx-auto w-11/12 px-4'>
             <div className="overflow-x-auto border rounded-lg shadow-xl">
-                <Table className="w-full bg-secondary-content border-accent-content md:border-2   text-left custom-table">
+                <Table className="w-full bg-secondary-content    text-left custom-table">
                     <Thead className="bg-gray-100">
-                        <Tr className=" text-sm uppercase tracking-wide">
+                        <Tr className=" text-sm text-gray-700 uppercase tracking-wide">
                             <Th className="p-3 ">Image</Th>
                             <Th className="p-3">Title</Th>
                             <Th className="p-3">Topic</Th>

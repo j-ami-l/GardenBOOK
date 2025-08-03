@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/Authprovider';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 const SignUp = () => {
     const { register, updateuser, googleRegister } = useContext(AuthContext);
     const [error, setError] = useState(null);
+    const navigate = useNavigate()
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -29,10 +30,9 @@ const SignUp = () => {
 
 
         register(email, password)
-            .then((result) => {
-                console.log(result);
+            .then(() => {
                 setError(null);
-                toast.success("Logged In Successfully")
+                toast.success("Registerd Account Successfully")
                 updateuser({ displayName: name, photoURL: photo })
                     .then(() => {
                         fetch('https://garden-book-server-site-2.vercel.app/adduser', {
@@ -42,11 +42,7 @@ const SignUp = () => {
                             },
                             body: JSON.stringify({ displayName: name, photoURL: photo, email: email, likedPost: [1, 2], role: "" })
                         })
-                            .then(res => res.json())
-                            .then(result => {
-                                console.log(result);
-
-                            })
+                        navigate('/');
                     })
                     .catch((err) => {
                         setError(err.message);
@@ -63,7 +59,6 @@ const SignUp = () => {
     const handleGoogleSignUp = () => {
         googleRegister()
             .then((result) => {
-                console.log(result);
                 fetch('https://garden-book-server-site-2.vercel.app/adduser', {
                     method: 'POST',
                     headers: {
@@ -71,12 +66,9 @@ const SignUp = () => {
                     },
                     body: JSON.stringify({ displayName: result?.user?.displayName, photoURL: result?.user?.photoURL, email: result?.user?.email, likedPost: [1, 2], role: "" })
                 })
-                    .then(res => res.json())
-                    .then(result => {
-                        console.log(result);
 
-                    })
-                toast.success("Logged In Successfully")
+                toast.success("Registerd Account Successfully")
+                navigate('/');
                 setError(null);
             })
             .catch((err) => {

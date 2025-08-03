@@ -2,10 +2,11 @@ import React, { use } from 'react';
 
 import Modal from 'react-modal';
 import { AuthContext } from '../Provider/Authprovider';
+import Swal from 'sweetalert2';
 
-const ModalUpdate = ({ tip , handeUpdates }) => {
+const ModalUpdate = ({ tip, handeUpdates }) => {
 
-    const {user} = use(AuthContext)
+    const { user } = use(AuthContext)
 
     const handleSubmitUpdate = (e) => {
         e.preventDefault();
@@ -22,9 +23,15 @@ const ModalUpdate = ({ tip , handeUpdates }) => {
             body: JSON.stringify(UpdatePost)
         })
             .then(res => res.json())
-            .then(result => {
-                console.log(result);
+            .then(() => {
                 handeUpdates(UpdatePost)
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Tip Updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             })
     }
     return (

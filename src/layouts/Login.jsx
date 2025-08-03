@@ -1,11 +1,17 @@
 import React, { use, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/Authprovider';
 import { toast } from 'react-toastify';
 
 const Login = () => {
   const { login, googleRegister } = use(AuthContext);
   const [error, setError] = useState(null);
+  const navigate = useNavigate()
+  const location = useLocation()
+
+
+  const from = location.state?.from?.pathname || "/";
+  
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -14,9 +20,9 @@ const Login = () => {
     const password = form.password.value;
 
     login(email, password)
-      .then((result) => {
-        console.log(result);
+      .then(() => {
         toast.success("Logged In Successfully")
+        navigate(from, { replace: true });
         setError(null);
         form.reset();
       })
@@ -29,7 +35,6 @@ const Login = () => {
   const handleGoogleSignUp = () => {
     googleRegister()
       .then((result) => {
-        console.log(result);
         fetch('https://garden-book-server-site-2.vercel.app/adduser', {
           method: 'POST',
           headers: {
@@ -37,11 +42,8 @@ const Login = () => {
           },
           body: JSON.stringify({ displayName: result?.user?.displayName, photoURL: result?.user?.photoURL, email: result?.user?.email, likedPost: [1, 2], role: "" })
         })
-          .then(res => res.json())
-          .then(result => {
-            console.log(result);
 
-          })
+        navigate(from, { replace: true });
         toast.success("Logged In Successfully")
         setError(null);
       })

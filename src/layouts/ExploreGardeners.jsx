@@ -1,11 +1,11 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AddGardeners from './AddGardeners';
 import { AuthContext } from '../Provider/Authprovider';
 import GardenerCard from '../Components/GardenerCard';
 import Loading from '../Components/Loading';
 
 const ExploreGardeners = () => {
-    const { user, setLoading } = use(AuthContext)
+
     const [gardeneres, setGardenres] = useState([])
 
 
@@ -16,8 +16,6 @@ const ExploreGardeners = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
-
                 setGardenres(result)
             })
     }, [])

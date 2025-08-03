@@ -3,8 +3,6 @@ import { AuthContext } from '../Provider/Authprovider';
 
 const AddGardeners = () => {
 
-
-    const { user, userOtherInfo } = use(AuthContext)
     const HandleSubmit = e => {
         e.preventDefault();
 
@@ -21,8 +19,7 @@ const AddGardeners = () => {
             body: JSON.stringify(newGardener)
         })
             .then(res => res.json())
-            .then(result => {
-                console.log(result);
+            .then(() => {
                 form.reset();
             })
 
