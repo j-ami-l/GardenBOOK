@@ -3,6 +3,7 @@ import Banner from '../Components/Header/Banner';
 import ActiveGardeners from '../Components/ActiveGardeners';
 import TrandingTips from '../Components/TrandingTips';
 import Example from '../Components/Example';
+import MostlyAsked from '../Components/MostlyAsked';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
                 <ActiveGardeners></ActiveGardeners>
             </div>
             <TrandingTips></TrandingTips>
+            <MostlyAsked></MostlyAsked>
         </div>
     );
 };
