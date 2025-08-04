@@ -2,21 +2,20 @@
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { MdDelete } from "react-icons/md";
-import { FaPencil } from "react-icons/fa6";
-import ModalUpdate from './ModalUpdate';
 import { useState } from 'react';
+import CustomModal from './CustomModal/CustomModal';
 
 
 
 
-const MyTipsTable = ({ SingleTip , handleDelete }) => {
-    
-    const [tip , setTips] = useState(SingleTip)
+const MyTipsTable = ({ SingleTip, handleDelete }) => {
 
-    const handeUpdates = e =>{
+    const [tip, setTips] = useState(SingleTip)
+
+    const handeUpdates = e => {
         setTips(e)
     }
-    
+
 
     return (
 
@@ -42,18 +41,14 @@ const MyTipsTable = ({ SingleTip , handleDelete }) => {
                 </span>
             </Td>
             <Td className="p-3 text-gray-500 "><div className="space-x-2 flex items-center">
-                <div onClick={() => document.getElementById(`${tip._id}modal`).showModal()} className=" border-green-200 cursor-pointer border-2  p-2 rounded-[50%]"><FaPencil
-                    size={18}
-                    color='' className='text-accent-content'></FaPencil></div>
+                <CustomModal handeUpdates={handeUpdates} tip={tip}></CustomModal>
                 <div onClick={() => handleDelete(tip._id)} className="cursor-pointer border-green-200 border-2  p-2 rounded-[50%]"><MdDelete
                     size={18}
                     color=''
                     className='text-accent-content'
                 ></MdDelete></div>
             </div></Td>
-            <Td>
-                <ModalUpdate handeUpdates={handeUpdates} tip={tip}></ModalUpdate>
-            </Td>
+
         </Tr >
 
     );

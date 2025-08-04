@@ -9,15 +9,15 @@ const Footer = () => {
           <h6 className="footer-title mb-4 ">Contact Us</h6>
           <div className="flex items-center gap-2 mb-2">
             <FaPhoneAlt />
-            <span>+880 1234-567890</span>
+            <span>+880 123000000</span>
           </div>
           <div className="flex items-center gap-2 mb-2">
             <FaEnvelope />
-            <span>info@example.com</span>
+            <span>mdhasanjamil001@gmail.com</span>
           </div>
           <div className="flex items-center gap-2">
             <FaMapMarkerAlt />
-            <span>Dhaka, Bangladesh</span>
+            <span>Chottogram, Bangladesh</span>
           </div>
         </div>
         <div>
