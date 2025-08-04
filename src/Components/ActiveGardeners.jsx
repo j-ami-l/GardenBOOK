@@ -3,10 +3,11 @@ import GardenerCard from './GardenerCard';
 import Marquee from 'react-fast-marquee';
 import { Link } from 'react-router';
 import { AuthContext } from '../Provider/Authprovider';
+import Loading from './Loading';
 
 const ActiveGardeners = () => {
 
-    const [ActiveGardener, setActiveGardener] = useState()
+    const [ActiveGardener, setActiveGardener] = useState(null)
 
     useEffect(() => {
         fetch('https://garden-book-server-site-2.vercel.app/activegardeners', {
@@ -18,7 +19,9 @@ const ActiveGardeners = () => {
             })
     }, [])
 
-
+    if(!ActiveGardener){
+        return <Loading></Loading>
+    }
 
     return (
         <div>

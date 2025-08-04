@@ -21,12 +21,14 @@ const SignUp = () => {
                 'Password must have at least 1 uppercase, 1 lowercase, 1 digit, and be at least 8 characters.'
             );
             Swal.fire({
+                text: 'Password must have at least 1 uppercase, 1 lowercase, 1 digit, and be at least 8 characters.',
                 icon: "error",
                 title: "Oops...",
-                text: error,
             });
+
             return;
         }
+
 
 
         register(email, password)
@@ -66,7 +68,6 @@ const SignUp = () => {
                     },
                     body: JSON.stringify({ displayName: result?.user?.displayName, photoURL: result?.user?.photoURL, email: result?.user?.email, likedPost: [1, 2], role: "" })
                 })
-
                 toast.success("Registerd Account Successfully")
                 navigate('/');
                 setError(null);
