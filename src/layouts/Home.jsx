@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Banner from '../Components/Header/Banner';
 import ActiveGardeners from '../Components/ActiveGardeners';
 import TrandingTips from '../Components/TrandingTips';
 import Example from '../Components/Example';
 import MostlyAsked from '../Components/MostlyAsked';
 import GeneralTips from '../Components/GeneralTips';
+import Loading from '../Components/Loading';
 
 const Home = () => {
     return (
@@ -16,7 +17,9 @@ const Home = () => {
                 </div>
                 <ActiveGardeners></ActiveGardeners>
             </div>
-            <TrandingTips></TrandingTips>
+            <Suspense fallback={<Loading></Loading>}>
+                <TrandingTips></TrandingTips>
+            </Suspense>
             <GeneralTips></GeneralTips>
             <MostlyAsked></MostlyAsked>
         </div>

@@ -45,6 +45,9 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return signInWithPopup(auth, provider)
     }
+    const passwordReset = ( email) =>{
+        return sendPasswordResetEmail(auth , email)
+    }
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -71,7 +74,8 @@ const AuthProvider = ({ children }) => {
         loading,
         setLoading,
         userOtherInfo,
-        setUserOtherInfo
+        setUserOtherInfo,
+        passwordReset
     }
 
     return (

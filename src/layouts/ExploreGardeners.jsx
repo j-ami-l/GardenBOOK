@@ -7,7 +7,7 @@ import { UserInfoContext } from '../Provider/UserInfoProvider';
 
 const ExploreGardeners = () => {
 
-    const [gardeneres, setGardenres] = useState([])
+    const [gardeneres, setGardenres] = useState(null)
 
     const {userData} = use(UserInfoContext)
 

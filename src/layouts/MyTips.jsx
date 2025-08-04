@@ -8,7 +8,7 @@ import { AuthContext } from '../provider/Authprovider';
 
 const MyTips = () => {
     const { user } = use(AuthContext);
-    const [mytips, setMytips] = useState([]);
+    const [mytips, setMytips] = useState(null);
 
 
 
@@ -30,7 +30,9 @@ const MyTips = () => {
         }
     }, [user]);
 
-
+    if(!mytips){
+        return <Loading></Loading>
+    }
 
 
 

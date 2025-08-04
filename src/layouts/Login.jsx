@@ -88,7 +88,7 @@ const Login = () => {
           </div>
 
           <div className="flex justify-between items-center text-sm text-gray-600">
-            <a className="link link-hover text-primary className='text-[11px] md:text-[15px]'">Forgot password?</a>
+            <Link to={'/resetPass'} className="link link-hover text-primary className='text-[11px] md:text-[15px]'">Forgot password?</Link>
             <span className='text-[11px] text-primary md:text-[15px]'>
               Don’t have an account?{' '}
               <Link to="/signup" className="text-blue-400 font-medium underline">

@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect, use } from "react";
-import "./CustomModal.css"; // Import external CSS
+import React, { useState, useRef, use } from "react";
 import { AuthContext } from "../../Provider/Authprovider";
 import Swal from "sweetalert2";
 import { FaPencil } from "react-icons/fa6";
@@ -8,8 +7,6 @@ const CustomModal = ({ tip, handeUpdates }) => {
     const [isOpen, setIsOpen] = useState(false);
     const modalRef = useRef(null);
     const { user } = use(AuthContext)
-
-
 
 
     const handleSubmitUpdate = (e) => {
@@ -49,9 +46,9 @@ const CustomModal = ({ tip, handeUpdates }) => {
 
 
             {isOpen && (
-                <div className="modal-overlay">
-                    <div className="modal-content bg-secondary-content p-5 rounded-2xl" ref={modalRef}>
-                        <button className="close-btn" onClick={() => setIsOpen(false)}>
+                <div className=" fixed top-0 left-0 w-full h-full flex justify-center items-center z-[100]">
+                    <div className="relative shadow-2xl bg-secondary-content p-5 rounded-2xl" ref={modalRef}>
+                        <button className="close-btn absolute top-[10px] right-[10px] bg-transparent border-0 text-2xl cursor-pointer" onClick={() => setIsOpen(false)}>
                             ×
                         </button>
                         <form onSubmit={handleSubmitUpdate}>
@@ -83,19 +80,19 @@ const CustomModal = ({ tip, handeUpdates }) => {
                                     <select
                                         name="difficulty"
                                         defaultValue={tip.difficulty || ""}
-                                        className="select select-bordered text-accent-content"
+                                        className="select select-bordered bg-secondary-content"
                                         required
                                     >
                                         <option value="" disabled>
                                             Difficulty
                                         </option>
-                                        <option value="Easy">Easy</option>
-                                        <option value="Medium">Medium</option>
-                                        <option value="Hard">Hard</option>
+                                        <option value="Easy" className="text-accent-content">Easy</option>
+                                        <option value="Medium" className="text-accent-content">Medium</option>
+                                        <option value="Hard" className="text-accent-content">Hard</option>
                                     </select>
-                                    <select name="availability" defaultValue={tip.availability} className="select text-accent-content select-bordered" required>
-                                        <option value="Public">Public</option>
-                                        <option value="Private">Private</option>
+                                    <select name="availability" defaultValue={tip.availability} className="select bg-secondary-content select-bordered" required>
+                                        <option value="Public" className="text-accent-content">Public</option>
+                                        <option value="Private" className="text-accent-content">Private</option>
                                     </select>
                                 </div>
                             </div>

@@ -3,9 +3,10 @@ import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import BrowseTipsTable from './BrowseTipsTable';
 import { Typewriter } from 'react-simple-typewriter';
+import Loading from './Loading';
 
 const TrandingTips = () => {
-    const [topFour, setTopFour] = useState([]);
+    const [topFour, setTopFour] = useState(null);
 
     useEffect(() => {
         fetch('https://garden-book-server-site-2.vercel.app/browsetips')
@@ -16,6 +17,7 @@ const TrandingTips = () => {
             })
     }, []);
 
+    if(!topFour) return <Loading></Loading>
 
     return (
         <div className='my-15 mx-auto max-w-screen-xl px-4 '>
